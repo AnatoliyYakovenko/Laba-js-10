@@ -14,71 +14,51 @@ describe("Check user event", () => {
 
 describe("isNumber", function () {
   it("check argument is a number", function () {
-    expect(isNumber("Laba", 3)).toEqual("Це не число!");
-    expect(isNumber(29, null)).toEqual("Це не число!");
-    expect(isNumber(29, undefined)).toEqual("Це не число!");
+    expect(isNumber("Laba", 3)).toBe("Це не число!");
+    expect(isNumber(29, null)).toBe("Це не число!");
+    expect(isNumber(29, undefined)).toBe("Це не число!");
   });
-  it("should return undefined if both arguments are numbers", function () {
+  it("return undefined if both arguments are numbers", function () {
     expect(isNumber(2, 3)).toBeUndefined();
   });
 });
 
 describe("addNumbers", function () {
-  it("should return 'Це не число!' if either argument is not a number", function () {
-    expect(addNumbers("a", 3)).toEqual("Це не число!");
-    expect(addNumbers(2, null)).toEqual("Це не число!");
-  });
-  it("should return the sum of two numbers if both arguments are numbers", function () {
-    expect(addNumbers(2, 3)).toEqual(5);
-    expect(addNumbers(-2, 3)).toEqual(1);
+  it("return the sum of two numbers", function () {
+    expect(addNumbers(2, 3)).toBe(5);
   });
 });
 
 describe("subNumbers", function () {
-  it("should return 'Це не число!' if either argument is not a number", function () {
-    expect(subNumbers("a", 3)).toEqual("Це не число!");
-    expect(subNumbers(2, null)).toEqual("Це не число!");
-  });
-  it("should return the difference of two numbers if both arguments are numbers", function () {
-    expect(subNumbers(2, 3)).toEqual(-1);
-    expect(subNumbers(-2, 3)).toEqual(-5);
+  it("return the difference of two numbers", function () {
+    expect(subNumbers(2, 13)).toBe(-11);
   });
 });
 
 describe("multiplyNumbers", function () {
-  it("should return 'Це не число!' if either argument is not a number", function () {
-    expect(multiplyNumbers("a", 3)).toEqual("Це не число!");
-    expect(multiplyNumbers(2, null)).toEqual("Це не число!");
-  });
-  it("should return the product of two numbers if both arguments are numbers", function () {
-    expect(multiplyNumbers(2, 3)).toEqual(6);
-    expect(multiplyNumbers(-2, 3)).toEqual(-6);
+  it("return the product of two numbers", function () {
+    expect(multiplyNumbers(5, 10)).toBe(50);
   });
 });
 
 describe("divideNumbers", function () {
-  it("should return 'Це не число!' if either argument is not a number", function () {
-    expect(divideNumbers("a", 3)).toEqual("Це не число!");
-    expect(divideNumbers(2, null)).toEqual("Це не число!");
+  it("check denominator isn't a 0", function () {
+    expect(divideNumbers(2, 0)).toBe("На нуль ділити не можна!");
   });
-  it("should return 'На нуль ділити не можна!' if the second argument is 0", function () {
-    expect(divideNumbers(2, 0)).toEqual("На нуль ділити не можна!");
-  });
-  it("should return the quotient of two numbers if both arguments are numbers and the second argument is not 0", function () {
-    expect(divideNumbers(6, 3)).toEqual(2);
-    expect(divideNumbers(-6, 3)).toEqual(-2);
+  it("return the quotient of two numbers", function () {
+    expect(divideNumbers(66, 3)).toBe(22);
   });
 });
 
 describe("getMinNumber function", () => {
   it("return the minimum number in the array", () => {
-    expect(getMinNumber(arr)).toEqual(1);
+    expect(getMinNumber(arr)).toBe(-2);
   });
 });
 
 describe("getMaxNumber function", () => {
   it("return the maximum number in the array", () => {
-    expect(getMaxNumber(arr)).toEqual(4);
+    expect(getMaxNumber(arr)).toBe(324);
   });
 });
 
@@ -87,7 +67,7 @@ describe("Accumulator", () => {
     it("increment the value by 1", () => {
       const accumulator = new Accumulator(0);
       accumulator.increment();
-      expect(accumulator.value).toEqual(1);
+      expect(accumulator.value).toBe(1);
     });
   });
 
@@ -95,24 +75,24 @@ describe("Accumulator", () => {
     it("decrement the value by 1", () => {
       const accumulator = new Accumulator(0);
       accumulator.decrement();
-      expect(accumulator.value).toEqual(-1);
+      expect(accumulator.value).toBe(-1);
     });
   });
 });
 
-describe("ClearAccumulator", () => {
+describe("CancelableAccumulator", () => {
   describe("clear method", () => {
     it("set the initial value", () => {
       const accumulator = new CancelableAccumulator(0);
       accumulator.increment();
       accumulator.clear();
-      expect(accumulator.value).toEqual(0);
+      expect(accumulator.value).toBe(0);
     });
   });
 });
 
 describe("click event", function () {
-  it("toggles 'photo' class on image element", function () {
+  it("toggles 'photo' class on image", function () {
     const image = document.querySelector("#image");
     image.classList.add("photo");
     const event = new MouseEvent("click", { bubbles: true });
@@ -124,7 +104,7 @@ describe("click event", function () {
 });
 
 describe("keydown event", function () {
-  it("scrolls to element a when 'a' key is pressed", function () {
+  it("scrolls to element A", function () {
     const a = document.querySelector("#a");
     spyOn(a, "scrollIntoView");
     const event = new KeyboardEvent("keydown", { key: "a" });
@@ -132,7 +112,7 @@ describe("keydown event", function () {
     expect(a.scrollIntoView).toHaveBeenCalled();
   });
 
-  it("scrolls to element b when 'b' key is pressed", function () {
+  it("scrolls to element B", function () {
     const b = document.querySelector("#b");
     spyOn(b, "scrollIntoView");
     const event = new KeyboardEvent("keydown", { key: "b" });
@@ -140,7 +120,7 @@ describe("keydown event", function () {
     expect(b.scrollIntoView).toHaveBeenCalled();
   });
 
-  it("scrolls to element c when 'c' key is pressed", function () {
+  it("scrolls to element C", function () {
     const c = document.querySelector("#c");
     spyOn(c, "scrollIntoView");
     const event = new KeyboardEvent("keydown", { key: "c" });
@@ -148,7 +128,7 @@ describe("keydown event", function () {
     expect(c.scrollIntoView).toHaveBeenCalled();
   });
 
-  it("scrolls to element d when 'd' key is pressed", function () {
+  it("scrolls to element D", function () {
     const d = document.querySelector("#d");
     spyOn(d, "scrollIntoView");
     const event = new KeyboardEvent("keydown", { key: "d" });

@@ -29,7 +29,7 @@ function divideNumbers(a, b) {
   }
   return a / b;
 }
-const arr = [1, 2, "a", 3, "b", 4];
+const arr = [1, 2, 324, null, -2, "a", 3, "b", 4];
 function getMinNumber(arr) {
   let minNumber = Infinity;
   for (let i = 0; i < arr.length; i++) {
